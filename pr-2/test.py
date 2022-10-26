@@ -1,17 +1,18 @@
-
+from shedule_class import FileShedule
+from watchdog.observers import Observer
 try:
     while True:
-        word = input()
+        print("Введите слово: ")
+        true = True
+        word: str = input()
         if word.isalpha() and len(word) >= 3:
-            for i in word:
-                if word == "А" or word == "О" or word == "У" or word == "Ы" or word == "Э" or word == "Е" or word == "Ё" or word == "И" or word == "Ю" or word == "Я" or word == "а" or word == "о" or word == "у" or word == "ы" or word == "э" or word == "е" or word == "ё" or word == "и" or word == "ю" or word == "я":
-                    i.lower()
-                else:
-                    i.upper()
+            file = f"C:/Users/artem/Desktop/Python/pr-2/files/{word}.txt"
+            with open (file, "w"):
+                print("Успешное создание файла")
             break
         else:
-            print("Коректно введите данные")
-        file = open("./files/"+word+".txt", "w")
-
-except:
+            print("Введите корректно данные")
+except Exception:
     print("Произошла ошибка")
+except KeyboardInterrupt:
+    print("Заверешение работы")
